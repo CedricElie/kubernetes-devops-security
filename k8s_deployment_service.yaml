@@ -16,7 +16,7 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: replace
+      - image: cedricelie/numeric-app:latest
         name: devsecops-container
 ---
 apiVersion: v1
