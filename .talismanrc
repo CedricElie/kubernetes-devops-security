@@ -1,3 +1,9 @@
 fileignoreconfig:
+- filename: sec_files/password.txt
+  checksum: f1cfc4e74637c1399a305acaf7991724f54503ec159d4f6ad969cacdfb8e04c8
 - filename: sec_files/file3
   checksum: aadcfb3e27dca26f722880cd4f59c9f57e71727a35a118bb1f1a0881bf53e2fc
+- filename: sec_files/file2
+  checksum: ccf59612b6c0301de5eddd30a32415b30932120ca155429f1fc1894c7da0ddd2
+- filename: setup/vm-install-script/install-script.sh
+  checksum: 771ebd28764d112f8585a31a96ba8268e3df472d98063fe878e74764b50d6bb8
