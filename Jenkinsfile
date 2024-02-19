@@ -1,13 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Build Artifact') { 
+        stage('Build Artifact') {
             steps {
                 sh 'mvn clean package -DskipTest=true'
                 archive 'target/*.jar'
             }
         }
-        stage('Unit Tests') { 
+        stage('Unit Tests') {
             steps {
                 sh 'mvn test'
             }
@@ -18,7 +18,17 @@ pipeline {
               }
             }
         }
-        stage('Docker Build and Push') { 
+        stage('Mutation Test - PIT') {
+            steps {
+                sh "mvn org.pitest:pitest-maven:mutationCoverage"
+            }
+            post {
+              always {
+                pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+              }
+            }
+        }
+        stage('Docker Build and Push') {
           steps {
             withDockerRegistry([credentialsId: "docker-hub",url: ""]) {
               sh 'printenv'
@@ -27,7 +37,7 @@ pipeline {
             }
           }
         }
-        stage('Kubernetes Deployment - DEV') { 
+        stage('Kubernetes Deployment - DEV') {
           steps {
             withKubeConfig([credentialsId: "kubeconfig"]) {
               sh 'printenv'
