@@ -58,14 +58,14 @@ pipeline {
     }
     post { 
         always { 
-            # Junit and JaCoco
+            // Junit and JaCoco
             junit 'target/surefire-reports/*.xml'
             jacoco execPattern: 'target/jacoco.exec'
 
-            # Mutation tests
+            // Mutation tests
             pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
 
-            # Dependency checks
+            // Dependency checks
             dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
         }
 
