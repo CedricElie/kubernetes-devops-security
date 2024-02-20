@@ -7,3 +7,5 @@ fileignoreconfig:
   checksum: ccf59612b6c0301de5eddd30a32415b30932120ca155429f1fc1894c7da0ddd2
 - filename: setup/vm-install-script/install-script.sh
   checksum: 771ebd28764d112f8585a31a96ba8268e3df472d98063fe878e74764b50d6bb8
+- filename: Jenkinsfile
+  checksum: 79fee41e38d9ffe139315dd5e70318fd124be3ed26829cff612b3515d7cd7b24
