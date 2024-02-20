@@ -1,3 +1,4 @@
+def stageResults = [:]
 pipeline {
     agent any
     stages {
@@ -15,11 +16,6 @@ pipeline {
         stage('Mutation Test - PIT') {
             steps {
                 sh "mvn org.pitest:pitest-maven:mutationCoverage"
-            }
-            post {
-              always {
-                pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
-              }
             }
         }
         stage('SonarQube - SAST') {
@@ -64,6 +60,7 @@ pipeline {
         jacoco execPattern: 'target/jacoco.exec'
         pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
         dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+        echo "Stage results: ${stageResults}"
       }
     }
 }
