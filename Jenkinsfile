@@ -35,7 +35,7 @@ pipeline {
               }
             }
         }
-        steps('Vulnerabilut Scan - Docker') {
+        stage('Vulnerability Scan - Docker') {
           steps {
             parallel (
                 "Dependency Scan" : {
